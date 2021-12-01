@@ -6,7 +6,7 @@ subroutine problem2()
     integer :: n
     
     print *, "Problem 2" 
-    call search(a, b, n, composite_simpson, g, 1e-6, gamma_x)
+    ! call search(a, b, n, composite_simpson, g, 1e-6, gamma_x)
     ! print *, "n=", n, "a=", a, "b=", b, "gamma_x=", gamma_x, "gamma=", composite_simpson(a, b, n, g, gamma_x)
-    print *, n, gamma_x, composite_simpson(a, b, n, g, gamma_x)
+    print *, n, gamma_x, composite_tixing(a, b, n, g, 1e-6_dp, gamma_x)
 end subroutine problem2

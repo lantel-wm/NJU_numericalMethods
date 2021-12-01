@@ -5,9 +5,10 @@ subroutine problem1()
     integer :: n_simpson, n_tixing
 
     print *, "Problem 1"
-    call search(0.0_dp, 1.0_dp, n_simpson, composite_simpson, f, 1e-6_dp, 0.0_dp)
-    call search(0.0_dp, 1.0_dp, n_tixing, composite_tixing, f, 1e-6_dp, 0.0_dp)
-    print *, n_simpson, composite_simpson(0.0_dp, 1.0_dp, n_simpson, f, 0.0_dp)
-    print *, n_tixing, composite_tixing(0.0_dp, 1.0_dp, n_tixing, f, 0.0_dp) 
+    ! call search(0.0_dp, 1.0_dp, n_simpson, composite_simpson, f, 1e-6_dp, 0.0_dp)
+    ! call search(0.0_dp, 1.0_dp, n_tixing, composite_tixing, f, 1e-6_dp, 0.0_dp)
+    ! print *, n_simpson, composite_simpson(0.0_dp, 1.0_dp, n_simpson, f, 0.0_dp)
+    print *, composite_simpson(0.0_dp, 1.0_dp, n_simpson, f, 1e-6_dp, 0.0_dp), n_simpson 
+    print *, composite_tixing(0.0_dp, 1.0_dp, n_tixing, f, 1e-6_dp, 0.0_dp), n_tixing 
 
 end subroutine problem1
