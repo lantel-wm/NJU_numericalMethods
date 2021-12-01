@@ -1,4 +1,5 @@
 program jsff6
     implicit none
-    print *, "hello from zzyserver01"    
+    call problem1();
+    call problem2();
 end program jsff6
