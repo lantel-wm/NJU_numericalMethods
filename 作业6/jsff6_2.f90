@@ -2,7 +2,7 @@ subroutine problem2()
     implicit none
     integer, parameter :: dp = selected_real_kind(15)
     real(8), external :: g, u, composite_simpson, composite_tixing, gauss_raguel
-    real(8), dimension(5) :: gamma_xs = [1.0_dp, 5.0_dp, 10.0_dp, 2.333333_dp, 3.141593_dp]
+    real(8), dimension(5) :: gamma_xs = [1.0_dp, 5.0_dp, 10.0_dp, 5.555555_dp, 3.141593_dp]
     real(8) :: a = 0.0_dp, b = 60.0_dp
     integer :: n, i
     
@@ -20,7 +20,17 @@ subroutine problem2()
     do i = 1, 5
         print *, gauss_raguel(n, u, gamma_xs(i)), n, gamma_xs(i)
     end do
-
-
+    n = 20
+    do i = 1, 5
+        print *, gauss_raguel(n, u, gamma_xs(i)), n, gamma_xs(i)
+    end do
+    n = 40
+    do i = 1, 5
+        print *, gauss_raguel(n, u, gamma_xs(i)), n, gamma_xs(i)
+    end do
+    n = 60
+    do i = 1, 5
+        print *, gauss_raguel(n, u, gamma_xs(i)), n, gamma_xs(i)
+    end do
 
 end subroutine problem2
