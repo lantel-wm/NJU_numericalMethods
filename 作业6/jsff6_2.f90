@@ -9,12 +9,14 @@ subroutine problem2()
     print *, "Problem 2" 
 
     print *, "Composite Simpson:"
+    print *, "\tresult\t\t\t     n\t\t  x"
     do i = 1, 5
         print *, composite_simpson(a, b, n, g, 1e-6_dp, gamma_xs(i)), n, gamma_xs(i)
     end do
 
     n = 5
     print *, "Gauss-Raguel:"
+    print *, "\tresult\t\t\t     n\t\t  x"
     do i = 1, 5
         print *, gauss_raguel(n, u, gamma_xs(i)), n, gamma_xs(i)
     end do
