@@ -14,6 +14,14 @@ function g(x, t)
     return
 end function g
 
+function u(x, t)
+    ! function used in Gauss-Raguel integral
+    implicit none
+    real(8) :: u, x, t
+    u = t ** (x - 1)
+    return
+end function u
+
 function composite_tixing(a, b, n, func, eps, gamma_x)
     ! apply variable step trapezium composite quadrature
     ! parameters: a, b: integral interval boundray (a, b)
@@ -77,7 +85,7 @@ function composite_simpson(a, b, n, func, eps, gamma_x)
     do while(abs(diff) > eps)
         h = 0.5_dp * pre_h
         res = 0.0_dp
-        ! res = 2.0_dp * func(gamma_x, a + (2.0_dp * dble(n) - 0.5_dp) * h)
+
         do i = 1, 2 * n
             res = res + 2.0_dp * func(gamma_x, a + (dble(i) - 0.5_dp) * h)
         end do
@@ -97,27 +105,25 @@ function composite_simpson(a, b, n, func, eps, gamma_x)
     return
 end function composite_simpson
 
-! subroutine search(a, b, n, int_method, func, eps, gamma_x)
-!     ! search for n which satisfies error less than eps
-!     ! parameters: n: to be calculated
-!     !             int_method: integral method, simpson or trapezium composite quadrature
-!     !             eps： precision
-!     !             gamma_x: parameter x in gamma function
-!     implicit none
-!     integer, parameter :: dp = selected_real_kind(15)
-!     integer, intent(in out) :: n
-!     real(8), intent(in) :: a, b, eps, gamma_x
-!     real(8), external :: int_method, func
-!     real(8) :: res, res_pre, diff
+function gauss_raguel(n, func, gamma_x)
+    implicit none
+    integer, parameter :: dp = selected_real_kind(15)
+    real(8) :: gauss_raguel, xi, wi, res
+    real(8), external :: func
+    real(8), intent(in) :: gamma_x
+    integer, intent(in) :: n
+    integer :: i
+    character(2) :: str
 
-!     n = 1
-!     diff = 1.0
-!     res_pre = int_method(a, b, n, func, gamma_x)
-!     do while(abs(diff) > eps)
-!         n = n + 1
-!         res = int_method(a, b, n, func, gamma_x)
-!         diff = res - res_pre
-!         res_pre = res
-!     end do
+    write(str,"(i0)") n
+    open(1, file='./nodes/data' // trim(adjustl(str)) // '.txt', status='old')
+    res = 0.0_dp
+    do i = 1, n
+        read(1, *) xi, wi
+        res = res + wi * func(gamma_x, xi)
+    end do
+    close(1)
 
-! end subroutine search
+    gauss_raguel = res
+    return
+end function gauss_raguel
