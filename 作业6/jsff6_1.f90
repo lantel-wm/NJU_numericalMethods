@@ -1,5 +1,4 @@
-subroutine problem1()
-    print *, "hello from zzyserver01"    
+subroutine problem1()   
     implicit none
     integer, parameter :: dp = selected_real_kind(15)
     real(8), external :: f, composite_simpson, composite_tixing

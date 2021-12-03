@@ -76,12 +76,13 @@ function composite_simpson(a, b, n, func, eps, gamma_x)
 
     do while(abs(diff) > eps)
         h = 0.5_dp * pre_h
-        res = 4.0_dp * func(gamma_x, a + (2 * dble(n) - 0.5_dp) * h)
-        do i = 1, 2 * n - 1
-            res = res + 4.0_dp * func(gamma_x, a + (dble(i) - 0.5_dp) * h) - 2.0_dp * func(gamma_x, a + dble(i) * h)
+        res = 2.0_dp * func(gamma_x, a + (2.0_dp * dble(n) - 1.0_dp) * h)
+        do i = 1, n - 1
+            res = res + 2.0_dp * func(gamma_x, a + (2.0_dp * dble(i) - 1.0_dp) * h)&
+                      - 1.0_dp * func(gamma_x, a + 2.0_dp * dble(i) * h)
         end do
 
-        res = 0.5_dp * pre_res + h * res / 6.0_dp
+        res = 0.5_dp * pre_res + h * res
         diff = (res - pre_res) / 15.0_dp
         pre_h = h
         pre_res = res
