@@ -17,7 +17,6 @@ U = np.insert(U, 0, values=np.zeros(19), axis=1)
 U = np.insert(U, 18, values=np.zeros(19), axis=1)
 
 np.set_printoptions(linewidth=np.inf)
-print(U)
 with open('u.txt', 'w') as f:
     f.write(' ')
     f.write(re.sub('[\[\]]', '', np.array_str(U)))
