@@ -3,7 +3,7 @@ subroutine read_uv(U, V)
     real(8) :: U(0:18, 0:18), V(0:18, 0:18)
 
     open(1, file='u.txt', status='old')
-    read(1, *) U(0:18, 0:18)
+    read(1, *) U
     close(1)
     
     open(2, file='v.txt', status='old')
