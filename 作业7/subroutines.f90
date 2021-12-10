@@ -52,6 +52,7 @@ subroutine solve_equation(D, phi, h, eps)
             phi(i, j) = 0.0_dp
         end do
     end do
+
     do while(diff > eps)
         diff = 1e-7_dp
         do i = 1, 17
