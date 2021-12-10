@@ -26,7 +26,7 @@ subroutine calc_div(D, U, V, h)
     implicit none
     integer, parameter :: dp = selected_real_kind(15)
     real(8) :: U(0:18, 0:18), V(0:18, 0:18)
-    real(8) :: D(0:18, 0:18)
+    real(8) :: D(17, 17)
     real(8) :: h
     integer :: i, j
 
@@ -62,7 +62,7 @@ subroutine solve_equation(D, phi, h, eps)
         do i = 1, 17
             do j = 1, 17
                 R(i, j) = (phi(i + 1, j) + phi(i, j + 1)&
-                        + phi(i - 1, j) + phi(i, j - 1) - 4.0_dp * phi(i, j)) / (4.0_dp * h * h) - D(i, j)
+                        + phi(i - 1, j) + phi(i, j - 1) - 4.0_dp * phi(i, j)) / (h * h) - D(i, j)
                 phi(i, j) = phi(i, j) + 0.25_dp * alpha * R(i, j)
                 diff = max(diff, abs(0.25_dp * alpha * R(i, j)))
             end do
