@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import re
 
-x = np.linspace(-2, 2, 17)
-y = np.linspace(-2, 2, 17)
+x = np.linspace(-2.25, 2.25, 19)
+y = np.linspace(-2.25, 2.25, 19)
 grid = np.meshgrid(x, y)
 
 dfU = pd.read_excel('u.xls', usecols=range(1, 18))
@@ -31,7 +31,7 @@ with open('v.txt', 'w') as f:
     f.write(re.sub('[\[\]]', '', np.array_str(V)))
     f.close()
 
-with open('gird.txt', 'w') as f:
+with open('grid.txt', 'w') as f:
     f.write(' ')
     f.write(re.sub('[\[\]]', '', np.array_str(grid[0].transpose())))
     f.write('\n\n ')
