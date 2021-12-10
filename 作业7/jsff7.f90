@@ -11,5 +11,6 @@ program jsff7
     call read_grid(grid_X, grid_Y)
     call calc_div(D, U, V, grid_X, grid_Y)
     call solve_equation(D, phi, 0.25_dp, 1e-7_dp)
+    print *, phi
     call calc_uv(phi,U_p, V_p, 0.25_dp)
 end program jsff7
