@@ -4,6 +4,7 @@ subroutine step1()
     real(8) :: grid_X(17, 17), grid_Y(17, 17)
 
     call read_uv(U, V)
+    print *, U
     call read_grid(grid_X, grid_Y)
-    print *, grid_X    
+
 end subroutine

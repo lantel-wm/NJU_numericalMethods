@@ -6,8 +6,15 @@ x = np.linspace(-2, 2, 17)
 y = np.linspace(-2, 2, 17)
 grid = np.meshgrid(x, y)
 
-U = pd.read_excel('u.xls', usecols=range(1, 18))
-V = pd.read_excel('v.xls', usecols=range(1, 18))
+dfU = pd.read_excel('u.xls', usecols=range(1, 18))
+dfV = pd.read_excel('v.xls', usecols=range(1, 18))
+
+U = dfU.values.transpose()
+V = dfV.values.transpose()
+U = np.insert(U, 0, values=zeros(17), axis=0)
+U = np.insert(U, 18, values=zeros(17), axis=0)
+U = np.insert(U, 0, values=zeros(19), axis=1)
+U = np.insert(U, 18, values=zeros(19), axis=1)
 
 np.set_printoptions(linewidth=np.inf)
 with open('u.txt', 'w') as f:
