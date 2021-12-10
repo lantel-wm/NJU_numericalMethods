@@ -22,17 +22,18 @@ subroutine read_grid(grid_X, grid_Y)
 
 end subroutine read_grid 
 
-subroutine calc_div(D, U, V, grid_X, grid_Y)
+subroutine calc_div(D, U, V, h) 
     implicit none
+    integer, parameter :: dp = selected_real_kind(15)
     real(8) :: U(0:18, 0:18), V(0:18, 0:18)
     real(8) :: D(0:18, 0:18)
-    real(8) :: grid_X(0:18, 0:18), grid_Y(0:18, 0:18)
+    real(8) :: h
     integer :: i, j
 
     do i = 1, 17
         do j = 1, 17
-            D(i, j) = (U(i + 1, j) - U(i - 1, j)) / (grid_X(i + 1, j) - grid_X(i - 1, j))&
-                    + (V(i, j + 1) - V(i, j - 1)) / (grid_Y(i, j + 1) - grid_Y(i, j - 1))
+            D(i, j) = (U(i + 1, j) - U(i - 1, j)) / (2.0_dp * h)&
+                    + (V(i, j + 1) - V(i, j - 1)) / (2.0_dp * h)
         end do
     end do
 
