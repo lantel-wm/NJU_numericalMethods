@@ -1,6 +1,6 @@
 subroutine read_uv(U, V)
     implicit none
-    real(8) :: U(0:18, 0:18), V(17, 17)
+    real(8) :: U(0:18, 0:18), V(0:18, 0:18)
 
     open(1, file='u.txt', status='old')
     read(1, *) U

@@ -15,6 +15,10 @@ U = np.insert(U, 0, values=np.zeros(17), axis=0)
 U = np.insert(U, 18, values=np.zeros(17), axis=0)
 U = np.insert(U, 0, values=np.zeros(19), axis=1)
 U = np.insert(U, 18, values=np.zeros(19), axis=1)
+V = np.insert(V, 0, values=np.zeros(17), axis=0)
+V = np.insert(V, 18, values=np.zeros(17), axis=0)
+V = np.insert(V, 0, values=np.zeros(19), axis=1)
+V = np.insert(V, 18, values=np.zeros(19), axis=1)
 
 np.set_printoptions(linewidth=np.inf)
 with open('u.txt', 'w') as f:
