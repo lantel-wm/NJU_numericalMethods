@@ -64,3 +64,29 @@ subroutine solve_equation(D, phi, h, eps)
     end do
     
 end subroutine solve_equation
+
+subroutine calc_uv(phi, U_p, V_p, h)
+    implicit none
+    integer, parameter :: dp = selected_real_kind(15)
+    real(8), intent(in) :: phi(0:18, 0:18)
+    real(8) :: U_p(17, 17), V_p(17, 17)
+    real(8) :: h
+    integer :: i, j
+
+    do i = 1, 17
+        do j = 1, 17
+            U_p(i, j) = (phi(i - 1, j) - phi(i + 1, j)) / (2.0_dp * h)
+            V_p(i, j) = (phi(i, j - 1) - phi(i, j + 1)) / (2.0_dp * h)
+        end do
+    end do 
+
+    open(1, file='up.txt', status='new')
+    write(1, *) U_p
+    close(1)
+
+    open(2, file='vp.txt', status='new')
+    write(2, *) V_p
+    close(2)
+
+end subroutine calc_uv
+
