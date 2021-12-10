@@ -10,3 +10,9 @@ subroutine read_uv(U, V)
     read(2, *) V
     close(2)
 end subroutine
+
+subroutine read_grid(grid_X, grid_Y)
+    implicit none
+    real(8) :: grid_X(17, 17), grid_Y(17, 17)
+    
+end subroutine

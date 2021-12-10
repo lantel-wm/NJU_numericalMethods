@@ -22,5 +22,7 @@ with open('v.txt', 'w') as f:
 
 with open('gird.txt', 'w') as f:
     f.write(' ')
-    f.write(re.sub('[\[\]]', '', np.array_str(grid.values.transpose())))
+    f.write(re.sub('[\[\]]', '', np.array_str(grid[0].transpose())))
+    f.write('\n\n ')
+    f.write(re.sub('[\[\]]', '', np.array_str(grid[1].transpose())))
     f.close()
