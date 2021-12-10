@@ -5,5 +5,5 @@ subroutine step1()
 
     call read_uv(U, V)
     call read_grid(grid_X, grid_Y)
-    
+    print *, grid_X    
 end subroutine
