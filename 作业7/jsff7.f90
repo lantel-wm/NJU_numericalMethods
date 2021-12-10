@@ -2,7 +2,7 @@ program jsff7
     implicit none
     integer, parameter :: dp = selected_real_kind(15)
     real(8) :: U(0:18, 0:18), V(0:18, 0:18)
-    real(8) :: U_p(0:18, 0:18), V_p(0:18, 0:18)
+    real(8) :: U_p(17, 17), V_p(17, 17)
     real(8) :: D(0:18, 0:18)
     real(8) :: phi(0:18, 0:18)
     real(8) :: grid_X(17, 17), grid_Y(17, 17)
