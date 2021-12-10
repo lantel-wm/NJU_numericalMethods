@@ -63,10 +63,15 @@ subroutine solve_equation(D, phi, h, eps)
             do j = 1, 17
                 R(i, j) = (phi_pre(i + 1, j) + phi_pre(i, j + 1)&
                         + phi(i - 1, j) + phi(i, j - 1) - 4.0_dp * phi_pre(i, j)) / (h * h) - D(i, j)
+            end do
+        end do
+
+        do i = 1, 17
+            do j = 1, 17
                 phi(i, j) = phi_pre(i, j) + 0.25_dp * alpha * R(i, j)
                 diff = max(diff, abs(0.25_dp * alpha * R(i, j)))
             end do
-        end do
+        end do 
         phi_pre = phi
     end do
     
