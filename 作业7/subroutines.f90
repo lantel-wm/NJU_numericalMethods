@@ -80,11 +80,11 @@ subroutine calc_uv(phi, U_p, V_p, h)
         end do
     end do 
 
-    open(1, file='up.txt', status='new')
+    open(1, file='up.txt')
     write(1, *) U_p
     close(1)
 
-    open(2, file='vp.txt', status='new')
+    open(2, file='vp.txt')
     write(2, *) V_p
     close(2)
 
