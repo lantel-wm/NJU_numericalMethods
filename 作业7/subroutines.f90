@@ -15,4 +15,8 @@ subroutine read_grid(grid_X, grid_Y)
     implicit none
     real(8) :: grid_X(17, 17), grid_Y(17, 17)
     
+    open(1, file='gird.txt', status='old')
+    read(1, *) grid_X, grid_Y
+    close(1)
+
 end subroutine
