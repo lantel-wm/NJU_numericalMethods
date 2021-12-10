@@ -58,7 +58,7 @@ subroutine solve_equation(D, phi, h, eps)
     end do
 
     do while(diff > eps)
-        diff = 1e-7_dp
+        diff = 1e-8_dp
         do i = 1, 17
             do j = 1, 17
                 R(i, j) = (phi_pre(i + 1, j) + phi_pre(i, j + 1)&
