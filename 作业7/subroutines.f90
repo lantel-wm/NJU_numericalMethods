@@ -51,6 +51,7 @@ subroutine solve_equation(D, phi, h, eps)
     do i = 0, 18
         do j = 0, 18
             phi(i, j) = 0.0_dp
+            R(i, j) = 0.0_dp
         end do
     end do
 
