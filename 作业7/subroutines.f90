@@ -14,10 +14,29 @@ end subroutine
 
 subroutine read_grid(grid_X, grid_Y)
     implicit none
-    real(8) :: grid_X(17, 17), grid_Y(17, 17)
+    real(8) :: grid_X(0:18, 0:18), grid_Y(0:18, 0:18)
     
-    open(1, file='gird.txt', status='old')
+    open(1, file='grid.txt', status='old')
     read(1, *) grid_X, grid_Y
     close(1)
 
-end subroutine
+end subroutine read_grid 
+
+subroutine calc_div(D, U, V, grid_X, grid_Y)
+    implicit none
+    real(8) :: U(0:18, 0:18), V(0:18, 0:18)
+    real(8) :: D(0:18, 0:18)
+    real(8) :: grid_X(0:18, 0:18), grid_Y(0:18, 0:18)
+    integer :: i, j
+
+    do i = 1, 17
+        do j = 1, 17
+            D(i, j) = (U(i + 1, j) - U(i - 1, j)) / (grid_X(i + 1, j) - grid_X(i - 1, j))&
+                    + (V(i, j + 1) - V(i, j - 1)) / (grid_Y(i, j + 1) - grid_Y(i, j - 1))
+        end do
+    end do
+
+end subroutine calc_div 
+
+subroutine solve_equation()
+end subroutine solve_equation
