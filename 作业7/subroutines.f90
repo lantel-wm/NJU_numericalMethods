@@ -72,7 +72,7 @@ subroutine solve_equation(D, phi, h, eps)
                 diff = max(diff, abs(0.25_dp * alpha * R(i, j)))
             end do
         end do 
-        ! phi_pre = phi
+        phi_pre = phi
     end do
     
 end subroutine solve_equation
