@@ -50,6 +50,8 @@ subroutine solve_equation(D, phi, h, eps)
     real(8) :: alpha = 1.6_dp, diff = 1.0_dp
     integer i, j
     
+    print *, D
+
     do i = 0, 18
         do j = 0, 18
             phi(i, j) = 0.0_dp
