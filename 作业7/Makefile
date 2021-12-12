@@ -4,7 +4,7 @@ jsff7:jsff7.f90
 	git add .
 	git commit -m 'make'
 clean:
-	rm jsff7 wind.png $({div,vor}_wind.png) {u,v,phi}.txt {u,v}p.txt
+	rm jsff7 wind.png $({div,vor}_wind.png) $({u,v,phi}.txt) $({u,v}p.txt)
 run:
 	python ./xls2arr.py
 	gfortran -o jsff7 -fbackslash jsff7.f90 subroutines.f90 
