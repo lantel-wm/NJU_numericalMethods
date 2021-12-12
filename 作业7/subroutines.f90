@@ -48,7 +48,7 @@ subroutine solve_equation(D, phi, h, eps)
     real(8), intent(in out) ::  phi(0:18, 0:18)
     real(8) :: R 
     real(8) :: alpha = 1.6_dp, diff = 1.0_dp
-    integer i, j
+    integer :: i, j, cnt = 0
     
     do i = 0, 18
         do j = 0, 18
@@ -57,6 +57,7 @@ subroutine solve_equation(D, phi, h, eps)
     end do
 
     do while(diff > eps)
+        cnt = cnt + 1
         diff = 1e-8_dp
         do i = 1, 17
             do j = 1, 17
@@ -67,7 +68,7 @@ subroutine solve_equation(D, phi, h, eps)
             end do
         end do
     end do
-    
+    print *, cnt
     open(1, file='phi.txt')
     write(1, *) phi(1:17, 1:17)
     close(1)
@@ -98,4 +99,3 @@ subroutine calc_uv(phi, U_p, V_p, h)
     close(2)
 
 end subroutine calc_uv
-
