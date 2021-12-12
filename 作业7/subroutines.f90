@@ -32,10 +32,10 @@ subroutine calc_div(D, U, V, h)
 
     do i = 1, 17
         do j = 1, 17
-            ! D(i, j) = (U(i + 1, j) - U(i - 1, j)) / (2.0_dp * h)&
-                    ! + (V(i, j + 1) - V(i, j - 1)) / (2.0_dp * h)
-            D(i, j) = (U(i + 1, j) - U(i, j)) / h&
-                    + (V(i, j + 1) - V(i, j)) / h
+            D(i, j) = (U(i + 1, j) - U(i - 1, j)) / (2.0_dp * h)&
+                    + (V(i, j + 1) - V(i, j - 1)) / (2.0_dp * h)
+            ! D(i, j) = (U(i + 1, j) - U(i, j)) / h&
+                    ! + (V(i, j + 1) - V(i, j)) / h
         end do
     end do
 
@@ -45,7 +45,7 @@ subroutine solve_equation(D, phi, h, eps)
     implicit none
     integer, parameter :: dp = selected_real_kind(15)
     real(8), intent(in) :: D(0:18, 0:18), h, eps
-    real(8),intent(in out) ::  phi(0:18, 0:18)
+    real(8), intent(in out) ::  phi(0:18, 0:18)
     real(8) :: R(0:18, 0:18)
     real(8) :: alpha = 1.6_dp, diff = 1.0_dp
     integer i, j
@@ -63,7 +63,7 @@ subroutine solve_equation(D, phi, h, eps)
             do j = 1, 17
                 R(i, j) = (phi(i + 1, j) + phi(i, j + 1)&
                         + phi(i - 1, j) + phi(i, j - 1) - 4.0_dp * phi(i, j)) / (h ** 2) - D(i, j)
-                phi(i, j) = phi(i, j) + 0.25_dp * alpha * R(i, j)
+                phi(i, j) = -0.4_dp * phi(i, j) + 0.25_dp * alpha * R(i, j)
                 diff = max(diff, abs(0.25_dp * alpha * R(i, j)))
             end do
         end do
