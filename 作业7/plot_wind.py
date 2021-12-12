@@ -14,24 +14,28 @@ dfV = pd.read_excel('v.xls', usecols=range(1, 18))
 U = dfU.values
 V = dfV.values
 
-#read u_prime, v_prime
+#read u_prime, v_prime, phi
 up = []
 vp = []
-
+phi = []
 with open('up.txt', 'r') as f:
     for line in f:
-        print(line.split())
         up = list(map(float, line.split()))
-f.close()
+    f.close()
 
 with open('vp.txt', 'r') as f:
     for line in f:
-        print(line.split())
         vp = list(map(float, line.split()))
-f.close()
+    f.close()
+
+with open('phi.txt', 'r') as f:
+    for line in f:
+        phi = list(map(float, line.split()))
+    f.close()
 
 up = np.array(up).reshape(17, 17)
 vp = np.array(vp).reshape(17, 17)
+phi = np.array(phi).reshape(17, 17)
 
 # plot original wind field
 plt.subplots(figsize=(12, 8))
@@ -50,8 +54,11 @@ plt.subplots(figsize=(12, 8))
 plt.xlabel('X')
 plt.ylabel('Y')
 
+#  contourf = plt.contourf(x, y, phi, cmap='flag')
+contour = plt.contour(x, y, phi, np.arange(-0.8, 0.601, 0.1), colors='k', linestyles='-')
 plt.quiver(x, y, up, vp)
-
+plt.clabel(contour, fontsize=10, colors='gray')
+#  plt.colorbar(contourf, drawedges=True, orientation='vertical',spacing='uniform')
 plt.savefig('div_wind.png')
 plt.close()
 
