@@ -69,7 +69,7 @@ subroutine solve_equation(D, phi, h, eps)
     end do
     
     open(1, file='phi.txt')
-    write(1, *) phi 
+    write(1, *) phi(1:17, 1:17)
     close(1)
 
 end subroutine solve_equation
