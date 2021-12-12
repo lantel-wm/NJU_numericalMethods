@@ -32,8 +32,10 @@ subroutine calc_div(D, U, V, h)
 
     do i = 1, 17
         do j = 1, 17
-            D(i, j) = (U(i + 1, j) - U(i - 1, j)) / (2.0_dp * h)&
-                    + (V(i, j + 1) - V(i, j - 1)) / (2.0_dp * h)
+            ! D(i, j) = (U(i + 1, j) - U(i - 1, j)) / (2.0_dp * h)&
+                    ! + (V(i, j + 1) - V(i, j - 1)) / (2.0_dp * h)
+            D(i, j) = (U(i + 1, j) - U(i, j)) / h&
+                    + (V(i, j + 1) - V(i, j)) / h
         end do
     end do
 
