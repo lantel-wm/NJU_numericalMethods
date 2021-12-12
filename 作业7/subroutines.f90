@@ -50,8 +50,6 @@ subroutine solve_equation(D, phi, h, eps)
     real(8) :: alpha = 1.6_dp, diff = 1.0_dp
     integer i, j
     
-    write(*, '(289F6.3)'), D
-
     do i = 0, 18
         do j = 0, 18
             phi(i, j) = 0.0_dp
@@ -70,6 +68,10 @@ subroutine solve_equation(D, phi, h, eps)
         end do
     end do
     
+    open(1, file='phi.txt')
+    write(1, *) phi 
+    close(1)
+
 end subroutine solve_equation
 
 subroutine calc_uv(phi, U_p, V_p, h)
