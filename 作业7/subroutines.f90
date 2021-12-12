@@ -50,7 +50,7 @@ subroutine solve_equation(D, phi, h, eps)
     real(8) :: alpha = 1.6_dp, diff = 1.0_dp
     integer i, j
     
-    print *, D
+    print '(F6.3)', D
 
     do i = 0, 18
         do j = 0, 18
