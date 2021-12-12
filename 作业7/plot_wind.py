@@ -44,7 +44,7 @@ plt.xlabel('X')
 plt.ylabel('Y')
 
 plt.quiver(x, y, U, V)
-
+plt.title('Original Wind Field')
 plt.savefig('wind.png')
 plt.close()
 
@@ -59,6 +59,7 @@ contour = plt.contour(x, y, phi, np.arange(-0.8, 0.601, 0.1), colors='k', linest
 plt.quiver(x, y, up, vp)
 plt.clabel(contour, fontsize=10, colors='gray')
 #  plt.colorbar(contourf, drawedges=True, orientation='vertical',spacing='uniform')
+plt.title('Divergence Wind Field')
 plt.savefig('div_wind.png')
 plt.close()
 
@@ -69,7 +70,7 @@ plt.xlabel('X')
 plt.ylabel('Y')
 
 plt.quiver(x, y, U - up, V - vp)
-
+plt.title('Vortex Wind Field')
 plt.savefig('vor_wind.png')
 plt.close()
 
