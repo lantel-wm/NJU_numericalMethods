@@ -4,13 +4,14 @@ jsff7:jsff7.f90
 	git add .
 	git commit -m 'make'
 clean:
-	rm jsff7
+	rm jsff7 wind.png div_wind.png vor_wind.png 
 run:
 	python ./xls2arr.py
 	gfortran -o jsff7 -fbackslash jsff7.f90 subroutines.f90 
 	git add .
 	git commit -m 'make run' 
 	./jsff7
+	python ./plot_wind.py
 gdb:
 	python ./xls2arr.py
 	gfortran -o jsff7 -g -fbackslash jsff7.f90 subroutines.f90 
