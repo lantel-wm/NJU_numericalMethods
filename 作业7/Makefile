@@ -11,7 +11,7 @@ run:
 	./jsff7
 	python ./plot_wind.py
 	git add .
-	git commit -m 'make run' 
+	git commit --allow-empty -m 'make run' 
 gdb:
 	python ./xls2arr.py
 	gfortran -o jsff7 -g -fbackslash jsff7.f90 subroutines.f90 
