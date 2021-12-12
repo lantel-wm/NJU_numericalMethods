@@ -44,7 +44,7 @@ end subroutine calc_div
 subroutine solve_equation(D, phi, h, eps)
     implicit none
     integer, parameter :: dp = selected_real_kind(15)
-    real(8), intent(in) :: D(0:18, 0:18), h, eps
+    real(8), intent(in) :: D(17, 17), h, eps
     real(8), intent(in out) ::  phi(0:18, 0:18)
     real(8) :: R 
     real(8) :: alpha = 1.6_dp, diff = 1.0_dp
