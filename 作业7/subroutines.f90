@@ -47,7 +47,7 @@ subroutine solve_equation(D, phi, h, eps)
     real(8), intent(in) :: D(0:18, 0:18), h, eps
     real(8), intent(in out) ::  phi(0:18, 0:18)
     real(8) :: R(0:18, 0:18)
-    real(8) :: alpha = 1.6_dp, diff = 1.0_dp
+    real(8) :: alpha = 1.6_dp, diff = 1.0_dp, phi_temp
     integer i, j
     
     do i = 0, 18
@@ -63,8 +63,9 @@ subroutine solve_equation(D, phi, h, eps)
             do j = 1, 17
                 R(i, j) = (phi(i + 1, j) + phi(i, j + 1)&
                         + phi(i - 1, j) + phi(i, j - 1) - 4.0_dp * phi(i, j)) - D(i, j) * h ** 2
-                phi(i, j) = phi(i, j) + 0.25_dp * alpha * R(i, j)
-                diff = max(diff, abs(0.25_dp * alpha * R(i, j)))
+                phi_temp = phi(i, j) + 0.25_dp * alpha * R(i, j)
+                diff = max(diff, abs(phi_temp - phi(i, j)))
+                phi(i, j) = phi_temp 
             end do
         end do
     end do
