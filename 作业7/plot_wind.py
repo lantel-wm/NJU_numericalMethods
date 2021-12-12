@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -55,7 +56,7 @@ plt.xlabel('X')
 plt.ylabel('Y')
 
 #  contourf = plt.contourf(x, y, phi, cmap='flag')
-contour = plt.contour(x, y, phi, np.arange(-0.8, 0.601, 0.1), colors='k', linestyles='-')
+contour = plt.contour(x, y, phi, np.arange(-0.8, 0.601, 0.1), colors='gray', linestyles='-')
 plt.quiver(x, y, up, vp)
 plt.clabel(contour, fontsize=10, colors='gray')
 #  plt.colorbar(contourf, drawedges=True, orientation='vertical',spacing='uniform')
