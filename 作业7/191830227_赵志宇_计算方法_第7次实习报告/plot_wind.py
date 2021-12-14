@@ -38,6 +38,8 @@ up = np.array(up).reshape(17, 17)
 vp = np.array(vp).reshape(17, 17)
 phi = np.array(phi).reshape(17, 17)
 
+print(U[0])
+
 # plot original wind field
 plt.subplots(figsize=(12, 8))
 
