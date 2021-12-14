@@ -79,15 +79,4 @@ plt.legend()
 plt.savefig('div_wind.png')
 plt.close()
 
-# plot vor wind field
-plt.subplots(figsize=(12, 8))
-
-plt.xlabel('X')
-plt.ylabel('Y')
-
-plt.quiver(x, y, U - up, V - vp)
-plt.title('Vortex Wind Field')
-plt.savefig('vor_wind.png')
-plt.close()
-
 
