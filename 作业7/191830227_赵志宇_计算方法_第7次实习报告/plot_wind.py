@@ -55,7 +55,7 @@ plt.ylabel('Y')
 
 contour = plt.contour(x, y, D, np.arange(-4, 3.5, 0.5), colors='gray', linestyles='-')
 plt.clabel(contour, fontsize=10, colors='gray')
-plt.quiver(x, y, U, V)
+plt.quiver(x, y, U, V, label='velocity')
 plt.title('Original Wind Field')
 plt.savefig('wind.png')
 plt.close()
