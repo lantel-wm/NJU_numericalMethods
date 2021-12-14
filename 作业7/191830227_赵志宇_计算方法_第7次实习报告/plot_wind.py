@@ -53,7 +53,7 @@ plt.subplots(figsize=(12, 8))
 plt.xlabel('X')
 plt.ylabel('Y')
 
-contour = plt.contour(x, y, D, np.arange(-4, 3.5, 0.5), colors='gray', linestyles='-', labels='Divergence')
+contour = plt.contour(x, y, D, np.arange(-4, 3.5, 0.5), colors='gray', linestyles='-', label='Divergence')
 plt.clabel(contour, fontsize=10, colors='gray')
 plt.quiver(x, y, U, V)
 plt.title('Original Wind Field')
