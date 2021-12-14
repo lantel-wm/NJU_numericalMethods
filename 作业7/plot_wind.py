@@ -19,6 +19,7 @@ V = dfV.values
 up = []
 vp = []
 phi = []
+D = []
 with open('up.txt', 'r') as f:
     for line in f:
         up = list(map(float, line.split()))
@@ -34,9 +35,17 @@ with open('phi.txt', 'r') as f:
         phi = list(map(float, line.split()))
     f.close()
 
+with open('D.txt', 'r') as f:
+    for line in f:
+        D = list(map(float, line.split()))
+    f.close()
+
 up = np.array(up).reshape(17, 17)
 vp = np.array(vp).reshape(17, 17)
 phi = np.array(phi).reshape(17, 17)
+D = np.array(D).reshape(17, 17)
+
+print(U[0])
 
 # plot original wind field
 plt.subplots(figsize=(12, 8))
@@ -44,8 +53,12 @@ plt.subplots(figsize=(12, 8))
 plt.xlabel('X')
 plt.ylabel('Y')
 
+contour = plt.contour(x, y, D, np.arange(-4, 3.5, 0.5), colors='gray', linestyles='-')
+contour.collections[0].set_label('Divergence')
+plt.clabel(contour, fontsize=10, colors='gray')
 plt.quiver(x, y, U, V)
 plt.title('Original Wind Field')
+plt.legend()
 plt.savefig('wind.png')
 plt.close()
 
@@ -57,22 +70,13 @@ plt.ylabel('Y')
 
 #  contourf = plt.contourf(x, y, phi, cmap='flag')
 contour = plt.contour(x, y, phi, np.arange(-0.8, 0.601, 0.1), colors='gray', linestyles='-')
+contour.collections[0].set_label('Velocity Potential')
 plt.quiver(x, y, up, vp)
 plt.clabel(contour, fontsize=10, colors='gray')
 #  plt.colorbar(contourf, drawedges=True, orientation='vertical',spacing='uniform')
 plt.title('Divergence Wind Field')
+plt.legend()
 plt.savefig('div_wind.png')
-plt.close()
-
-# plot vor wind field
-plt.subplots(figsize=(12, 8))
-
-plt.xlabel('X')
-plt.ylabel('Y')
-
-plt.quiver(x, y, U - up, V - vp)
-plt.title('Vortex Wind Field')
-plt.savefig('vor_wind.png')
 plt.close()
 
 

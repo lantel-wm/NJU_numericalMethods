@@ -38,7 +38,9 @@ subroutine calc_div(D, U, V, h)
                     ! + (V(i, j + 1) - V(i, j)) / h
         end do
     end do
-
+    open(1, file='D.txt')
+    write(1, *) D
+    close(1)
 end subroutine calc_div 
 
 subroutine solve_equation(D, phi, h, eps)
@@ -48,7 +50,7 @@ subroutine solve_equation(D, phi, h, eps)
     real(8), intent(in out) ::  phi(0:18, 0:18)
     real(8) :: R 
     real(8) :: alpha = 1.6_dp, diff = 1.0_dp
-    integer :: i, j, cnt = 0
+    integer i, j
     
     do i = 0, 18
         do j = 0, 18
@@ -57,18 +59,17 @@ subroutine solve_equation(D, phi, h, eps)
     end do
 
     do while(diff > eps)
-        cnt = cnt + 1
         diff = 1e-8_dp
         do i = 1, 17
             do j = 1, 17
                 R = (phi(i + 1, j) + phi(i, j + 1)&
-                        + phi(i - 1, j) + phi(i, j - 1) - 4.0_dp * phi(i, j)) - D(i, j) * h * h
+                        + phi(i - 1, j) + phi(i, j - 1) - 4.0_dp * phi(i, j)) + D(i, j) * h * h
                 phi(i, j) = phi(i, j) + 0.25_dp * alpha * R
                 diff = max(diff, abs(0.25_dp * alpha * R))
             end do
         end do
     end do
-    print *, cnt
+    
     open(1, file='phi.txt')
     write(1, *) phi(1:17, 1:17)
     close(1)
@@ -99,3 +100,4 @@ subroutine calc_uv(phi, U_p, V_p, h)
     close(2)
 
 end subroutine calc_uv
+
