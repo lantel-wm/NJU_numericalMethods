@@ -19,6 +19,7 @@ V = dfV.values
 up = []
 vp = []
 phi = []
+D = []
 with open('up.txt', 'r') as f:
     for line in f:
         up = list(map(float, line.split()))
@@ -34,9 +35,15 @@ with open('phi.txt', 'r') as f:
         phi = list(map(float, line.split()))
     f.close()
 
+with open('D.txt', 'r') as f:
+    for line in f:
+        D = list(map(float, line.split()))
+    f.close()
+
 up = np.array(up).reshape(17, 17)
 vp = np.array(vp).reshape(17, 17)
 phi = np.array(phi).reshape(17, 17)
+D = np.array(D).reshape(17, 17)
 
 print(U[0])
 
@@ -46,6 +53,7 @@ plt.subplots(figsize=(12, 8))
 plt.xlabel('X')
 plt.ylabel('Y')
 
+plt.contour(x, y, D, colors='gray', linestyles='-')
 plt.quiver(x, y, U, V)
 plt.title('Original Wind Field')
 plt.savefig('wind.png')

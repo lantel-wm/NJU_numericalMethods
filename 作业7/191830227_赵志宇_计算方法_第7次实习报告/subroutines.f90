@@ -38,7 +38,9 @@ subroutine calc_div(D, U, V, h)
                     ! + (V(i, j + 1) - V(i, j)) / h
         end do
     end do
-
+    open(1, file='D.txt')
+    write(1, *) D
+    close(1)
 end subroutine calc_div 
 
 subroutine solve_equation(D, phi, h, eps)
