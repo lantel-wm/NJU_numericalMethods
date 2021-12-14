@@ -58,7 +58,7 @@ contour.collections[0].set_label('Divergence')
 plt.clabel(contour, fontsize=10, colors='gray')
 plt.quiver(x, y, U, V)
 plt.title('Original Wind Field')
-plt.legend()
+plt.legend(loc='lower right')
 plt.savefig('wind.png')
 plt.close()
 
